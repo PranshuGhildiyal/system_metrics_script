@@ -38,7 +38,7 @@ while [[ $# -gt 0 ]]; do
         --format)
             FORMAT="$2"
             if [[ "$FORMAT" != "text" && "$FORMAT" != "json" && "$FORMAT" != "csv" ]]; then
-            echo "Error: --format must be text, json, or csv. (Case Sensitive))"
+            echo "Error: --format must be text, json, or csv. (Case Sensitive)"
             exit 1
       fi
             shift 2
@@ -56,7 +56,7 @@ get_system_info() {
 
     # Memory
     memory_info=($(free | grep Mem | awk '{print $2, $3, $4, $7}'))
-    total_mem=$((memory_info[0] / 1024)) #/1024 to convert it to MB.
+    total_mem=$((memory_info[0] / 1024))
     used_mem=$((memory_info[1] / 1024))
     free_mem=$((memory_info[2] / 1024))
     available_mem=$((memory_info[3] / 1024))
@@ -65,7 +65,7 @@ get_system_info() {
     disk_info=$(df -h | awk '$NF=="/" {print $2, $3, $5}')
     total_disk=$(echo "$disk_info" | awk '{print $1}')
     used_disk=$(echo "$disk_info" | awk '{print $2}')
-    disk_percent=$(echo "$disk_info" | awk '{print $3}' | sed 's/%//') 
+    disk_percent=$(echo "$disk_info" | awk '{print $3}' | sed 's/%//')
 
     # Top 5 processes
     top_processes=$(ps aux | awk '{print $2, $3, $11}' | sort -k2 -nr | head -n 5)
@@ -101,6 +101,7 @@ get_system_info() {
             generate_csv_report "$cpu_usage" "$total_mem" "$used_mem" "$free_mem" "$total_disk" "$used_disk" "$disk_percent" "$top_processes"
             ;;
         *)
+            # No action required. Case alrady handled.
             :
             ;;
     esac
