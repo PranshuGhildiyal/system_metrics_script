@@ -34,6 +34,6 @@ chmod +x monitor_system.sh
 ```bash
 /bin/bash monitor_system.sh --interval 5 --format text
 ```
-Available options:
---interval <seconds>: Set the interval in seconds. Default is 10 seconds.
---format <text|json|csv>: Specify the format. Default is text.
+#### Available options:
+- --interval <seconds>: Set the interval in seconds. Default is 10 seconds.
+- --format <text|json|csv>: Specify the format. Default is text.
