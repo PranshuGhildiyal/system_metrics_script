@@ -35,5 +35,11 @@ chmod +x monitor_system.sh
 /bin/bash monitor_system.sh --interval 5 --format text
 ```
 #### Available options:
+
 - --interval <seconds>: Set the interval in seconds. Default is 10 seconds.
 - --format <text|json|csv>: Specify the format. Default is text.
+
+### 4. Check Output
+
+- If the conditions for alerting match, alerts will appear on terminal itself.
+- The data produced will be stored in the file (./system_report) with specified format. (.txt | .json | .csv)
